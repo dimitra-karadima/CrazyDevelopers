@@ -3,6 +3,7 @@
  * 
  */
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Functions {
 	 static ArrayList<ArrayListLine> lists[]; //array that contains arraylists
@@ -33,17 +34,17 @@ public class Functions {
 	}
 	
 	/*
-	 * Method that returns a specifil object of a list
+	 * Method that prints a specifil object of a list
 	 */
-	public ArrayListLine get(int list,int num2) {
-		return lists[list].get(num2);
+	public void print(int list,int num2) {
+		lists[list].get(num2).printLine();;
 		
 	}
 	
 	/*
 	 * Method that changes an object of a specific line
 	 */
-	public void change(int list,int line,ArrayListLine object) {
-		lists[list].set(line, object);
+	public void change(int list,int line,int column,String change) {
+		lists[list].get(line).changeColumn(column, change);
 	}
 }
