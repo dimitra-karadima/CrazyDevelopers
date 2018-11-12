@@ -4,33 +4,32 @@
  */
 public class ArrayListLine {
 	private String[] line;
-	 //theoretical columns of our data base
-	
-	/*Constractor of our class
+	// theoretical columns of our data base
+
+	/*
+	 * Constractor of our class
 	 * 
 	 */
-	public ArrayListLine(String[]line) {
-		this.line=line;
+	public ArrayListLine(String[] line) {
+		this.line = line;
 	}
-	
+
 	/*
 	 * method that helps changing a specific column of our line
 	 */
-	public void changeColumn(int column,String x) {
-		line[column]=x;
+	public void changeColumn(int column, String x) {
+		line[column] = x;
 	}
-	
+
 	/*
 	 * Method that prints specific Line, will be used in the class Functions
 	 */
 	public void printLine() {
 		System.out.print("|");
-		for (int i=0;i<line.length;i++) {
-			System.out.print("\t"+line[i]+"\t|");
+		for (int i = 0; i < line.length; i++) {
+			System.out.print("\t" + line[i] + "\t|");
 		}
 		System.out.println("\t");
 	}
 
-	
-	
 }
