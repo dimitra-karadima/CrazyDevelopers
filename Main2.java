@@ -20,7 +20,7 @@ public class Main2 {
 				break;
 			}
 			case (2): { // case of printing data
-				data.printChoice(numTables);
+				data.printChoice();
 				break;
 			}
 			case (3): { // case of deleting data
@@ -28,7 +28,7 @@ public class Main2 {
 				break;
 
 			}
-			case (4): { // case of changind data
+			case (4): { // case of changing data
 				data.changeChoice();
 				break;
 			}

@@ -7,7 +7,7 @@ public class ArrayListLine {
 	// theoretical columns of our data base
 
 	/*
-	 * Constractor of our class
+	 * Constructor of our class
 	 * 
 	 */
 	public ArrayListLine(String[] line) {

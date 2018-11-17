@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Functions {
-	static ArrayList<ArrayListLine> lists[]; // array that contains arraylists
+	private static ArrayList<ArrayListLine> lists[]; // array that contains array lists
 	private static Scanner input = new Scanner(System.in); // new Scanner object
 
 	/*
-	 * Constractor of our class Sets length of our array of arraylists
+	 * Constructor of our class Sets length of our array of array lists
 	 */
 	public Functions(int num) {
 		lists = new ArrayList[num];
@@ -65,7 +65,7 @@ public class Functions {
 	}
 
 	/*
-	 * Method that prints a specifil object of a list
+	 * Method that prints a specific object of a list
 	 */
 	public void print(int list, int num2) {
 		lists[list].get(num2).printLine();
@@ -75,8 +75,8 @@ public class Functions {
 	 * Method that prints all the lines and columns(all the objects ArrayListLine
 	 * there are) of the existing tables Uses the method print of Functions to do so
 	 */
-	public void printChoice(int numberOfTables) {
-		for (int i = 0; i < numberOfTables; i++) {
+	public void printChoice() {
+		for (int i = 0; i < lists.length; i++) {
 			System.out.println("\tTable " + (i + 1));
 			for (int j = 0; j < lists[i].size(); j++) {
 				print(i, j);
@@ -93,7 +93,7 @@ public class Functions {
 	}
 
 	/*
-	 * Method that allows a user to change a specific column of a specifil line of a
+	 * Method that allows a user to change a specific column of a specific line of a
 	 * specific table Ask user to input number of table, number of line and number
 	 * of column This method uses the method change of class Functions to do so
 	 */
