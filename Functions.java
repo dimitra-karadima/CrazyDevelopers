@@ -7,11 +7,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Functions {
-<<<<<<< HEAD
 	Exceptions e=new Exceptions();//new Exceptions object called e
 	int[] features;
-=======
->>>>>>> 415d4707e74759866d6bc759606de2a0cdc4ef9d
 	private static ArrayList<ArrayListLine> lists[]; // array that contains array lists
 	private static Scanner input = new Scanner(System.in); // new Scanner object
 
