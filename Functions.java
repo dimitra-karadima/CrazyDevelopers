@@ -1,17 +1,19 @@
 
 /*Class that contains necessary functions for our database:
  * input of data , data presentation, delete and change of data
- * 
+ *
  */
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Functions {
-	static ArrayList<ArrayListLine> lists[]; // array that contains arraylists
+	Exceptions e=new Exceptions();//new Exceptions object called e
+	int[] features;
+	private static ArrayList<ArrayListLine> lists[]; // array that contains array lists
 	private static Scanner input = new Scanner(System.in); // new Scanner object
 
 	/*
-	 * Constractor of our class Sets length of our array of arraylists
+	 * Constructor of our class Sets length of our array of array lists
 	 */
 	public Functions(int num) {
 		lists = new ArrayList[num];
@@ -33,8 +35,10 @@ public class Functions {
 	 * it creates a new line using the addLine(...) method
 	 */
 	public void addChoice(int[] arrayNumberColumns) {
-		System.out.print("Enter number of table you wish to add a new object: ");
-		int tableAdd = input.nextInt();
+		features=arrayNumberColumns;
+		e.display("Enter number of table you wish to add a new object: ");//method from exceptions called
+		int tableAdd = e.NotIntegerException();//guarantees that InputMismatchException is not thrown
+		tableAdd=e.OutOfBoundsException(lists,tableAdd);//guarantees that InputMismatchException or ArrayOutOfBoundsException is not thrown
 		String[] newObject = new String[arrayNumberColumns[tableAdd - 1]];
 		for (int i = 0; i < arrayNumberColumns[tableAdd - 1]; i++) {
 			System.out.print("Enter something for column " + (i + 1) + ": ");
@@ -57,15 +61,17 @@ public class Functions {
 	 * do so
 	 */
 	public void deleteChoice() {
-		System.out.print("Select list to delete an item: ");
-		int list = input.nextInt();
-		System.out.print("Select number of item: ");
-		int item = input.nextInt();
+		e.display("Select list to delete an item: ");
+		int list = e.NotIntegerException();
+		list=e.OutOfBoundsException(lists,list);
+		e.display("Select number of item: ");
+		int item = e.NotIntegerException();
+		item=e.OutOfBoundsException(lists,item,list);
 		delete(item - 1, list - 1);
 	}
 
 	/*
-	 * Method that prints a specifil object of a list
+	 * Method that prints a specific object of a list
 	 */
 	public void print(int list, int num2) {
 		lists[list].get(num2).printLine();
@@ -75,8 +81,8 @@ public class Functions {
 	 * Method that prints all the lines and columns(all the objects ArrayListLine
 	 * there are) of the existing tables Uses the method print of Functions to do so
 	 */
-	public void printChoice(int numberOfTables) {
-		for (int i = 0; i < numberOfTables; i++) {
+	public void printChoice() {
+		for (int i = 0; i < lists.length; i++) {
 			System.out.println("\tTable " + (i + 1));
 			for (int j = 0; j < lists[i].size(); j++) {
 				print(i, j);
@@ -93,17 +99,20 @@ public class Functions {
 	}
 
 	/*
-	 * Method that allows a user to change a specific column of a specifil line of a
+	 * Method that allows a user to change a specific column of a specific line of a
 	 * specific table Ask user to input number of table, number of line and number
 	 * of column This method uses the method change of class Functions to do so
 	 */
 	public void changeChoice() {
-		System.out.print("Select table to change an item from : ");
-		int table = input.nextInt();
-		System.out.print("Select the line of item: ");
-		int item = input.nextInt();
-		System.out.print("Select the column of the item: ");
-		int col = input.nextInt();
+		e.display("Select table to change an item from : ");
+		int table = e.NotIntegerException();
+		table=e.OutOfBoundsException(lists,table);
+		e.display("Select the line of item: ");
+		int item = e.NotIntegerException();
+		item=e.OutOfBoundsException(lists,item,table);
+		e.display("Select the column of the item: ");
+		int col = e.NotIntegerException();
+		col=e.OutOfBoundsException(features,col,table);
 		System.out.print("Enter new value: ");
 		String newValue = input.next();
 		change(table - 1, item - 1, col - 1, newValue);
@@ -113,8 +122,8 @@ public class Functions {
 	 * Method that prints the menu to the screen and returns the choice of the user
 	 */
 	public int choiceForFunctions() {
-		System.out.println("Enter: 1 to add, 2 to show, 3 to delete, 4 to change data");
-		int choice = input.nextInt();
+		e.display("Enter: 1 to add, 2 to show, 3 to delete, 4 to change data");
+		int choice=e.NotIntegerException();//InputMisMatchException is only checked here
 		return choice;
 
 	}
@@ -128,8 +137,8 @@ public class Functions {
 	public int[] menuColumns(int tables) {
 		int[] columnPerTable = new int[tables];
 		for (int i = 0; i < tables; i++) {
-			System.out.print("Enter a positive amount of columns for table " + (i + 1) + ": ");
-			columnPerTable[i] = input.nextInt();
+			e.display("Enter a positive amount of columns for table " + (i + 1) + ": ");
+			columnPerTable[i] = e.NotIntegerException();
 		}
 		return columnPerTable;
 	}

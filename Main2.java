@@ -20,7 +20,7 @@ public class Main2 {
 				break;
 			}
 			case (2): { // case of printing data
-				data.printChoice(numTables);
+				data.printChoice();
 				break;
 			}
 			case (3): { // case of deleting data
@@ -28,7 +28,7 @@ public class Main2 {
 				break;
 
 			}
-			case (4): { // case of changind data
+			case (4): { // case of changing data
 				data.changeChoice();
 				break;
 			}
@@ -44,11 +44,12 @@ public class Main2 {
 	 * return this integer
 	 */
 	public static int openingMenu() {
-		System.out.print("Enter amount of tables: "); // tables check
-		int tables = input.nextInt();
+		Exceptions e=new Exceptions();
+		e.display("Enter amount of tables: "); // tables check
+		int tables = e.NotIntegerException();
 		while (tables <= 0) {
-			System.out.print("Enter positive quantity: ");
-			tables = input.nextInt();
+			e.display("Enter positive quantity: ");
+			tables = e.NotIntegerException();
 		}
 		return tables;
 	}
