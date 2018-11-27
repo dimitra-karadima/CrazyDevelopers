@@ -29,7 +29,7 @@ public class Main2 {
 
 			}
 			case (4): { // case of changing data
-				data.changeChoice();
+				data.changeChoice(arrayNumberColumns);
 				break;
 			}
 			default: {

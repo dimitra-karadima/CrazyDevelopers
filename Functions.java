@@ -100,22 +100,42 @@ public class Functions {
 
 	/*
 	 * Method that allows a user to change a specific column of a specific line of a
-	 * specific table Ask user to input number of table, number of line and number
-	 * of column This method uses the method change of class Functions to do so
+	 * specific table or a whole line .Asks user to choose what he wants
+	 * Then he inputs the number of table and number of line
+	 * if he chooses to change the whole line , he inputs all the different columns 
+	 * otherwise he clarifies which column he wants to change and goes on to change it
+	 *  This method uses the method change of class Functions to do so
 	 */
-	public void changeChoice() {
+	public void changeChoice(int[] arrayNumberColumns) {
+		System.out.print("Select 1 to change a whole line and 2 to change a specific column: ");
+		int choiceChange = input.nextInt();
+		while (choiceChange!=1 && choiceChange!=2) {
+			System.out.print("Invalid choice, enter 1 or 2: ");
+			choiceChange = input.nextInt();
+		}
 		e.display("Select table to change an item from : ");
 		int table = e.NotIntegerException();
 		table=e.OutOfBoundsException(lists,table);
 		e.display("Select the line of item: ");
 		int item = e.NotIntegerException();
 		item=e.OutOfBoundsException(lists,item,table);
-		e.display("Select the column of the item: ");
-		int col = e.NotIntegerException();
-		col=e.OutOfBoundsException(features,col,table);
-		System.out.print("Enter new value: ");
-		String newValue = input.next();
-		change(table - 1, item - 1, col - 1, newValue);
+		if (choiceChange == 1) {
+			String[] newObject = new String[arrayNumberColumns[table - 1]];
+			for (int i = 0; i < arrayNumberColumns[table - 1]; i++) {
+				System.out.print("Enter something for column " + (i + 1) + ": ");
+				newObject[i] = input.next();
+			}
+			for (int i=0; i<arrayNumberColumns[table - 1]; i++) {
+				change(table - 1, item - 1, i, newObject[i]);
+			}
+		} else {
+			e.display("Select the column of the item: ");
+			int col = e.NotIntegerException();
+			col=e.OutOfBoundsException(features,col,table);
+			System.out.print("Enter new value: ");
+			String newValue = input.next();
+			change(table - 1, item - 1, col - 1, newValue);
+		}
 	}
 
 	/*
