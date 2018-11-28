@@ -33,17 +33,9 @@ public class Main2 {
 			case (4): { // case of changing data
 				data.changeChoice(arrayNumberColumns);
 				break;
-			}case (5): { //case of ending loop and programm to save to file
-				try {
-					System.out.println("Enter the name of the file you want to save the database:");
-					String name=input.next();
-					FileWriter file = new FileWriter("C:\\Users/Public\\"+ name); //creates the file with name given by the user
-					data.fileAdd(name);
-					System.out.println("Congratulations! You can now find the database in C:\\Users/Public\\" + name); //informs the user where to find the file
-				} catch (IOException e) {
-					System.out.println("Error!");
-				}
-				exitCode=1; //ends programm
+			}case (5): { //case of ending loop and program to save to file
+				data.saveFile();
+				exitCode=1; //ends program
 				break;
 			}default: {
 				System.out.println("Invalid choice");

@@ -222,4 +222,18 @@ public class Functions {
 			System.out.println("Error!");
 		}
 	}
+	/*
+	 * Method to save the database as a file
+	 */
+	public void saveFile() {
+		try {
+			System.out.println("Enter the name of the file you want to save the database:");
+			String name=input.next();
+			FileWriter file = new FileWriter("C:\\Users/Public\\"+ name); //creates the file with name given by the user
+			fileAdd(name);
+			System.out.println("Congratulations! You can now find the database in C:\\Users/Public\\" + name); //informs the user where to find the file
+		} catch (IOException e) {
+			System.out.println("Error!");
+		}
+	}
 }
