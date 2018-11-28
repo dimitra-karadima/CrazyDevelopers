@@ -1,6 +1,6 @@
 /* ArrayListLine class
  *that will be used as a whole different  line in our database
- 
+
  */
 public class ArrayListLine {
 	private String[] line;
@@ -8,7 +8,7 @@ public class ArrayListLine {
 
 	/*
 	 * Constructor of our class
-	 * 
+	 *
 	 */
 	public ArrayListLine(String[] line) {
 		this.line = line;
@@ -31,5 +31,14 @@ public class ArrayListLine {
 		}
 		System.out.println("\t");
 	}
-
+	/*
+	 * Method that returns specific Line in an array, will be used in the class Functions
+	 */
+	public String[] getLine(){
+		String x[]=new String[line.length];
+		for (int i = 0; i < line.length; i++) {
+			x[i]=line[i];
+		}
+		return x;
+	}
 }

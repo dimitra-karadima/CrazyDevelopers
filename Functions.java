@@ -5,6 +5,7 @@
  */
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.*;
 
 public class Functions {
 	Exceptions e=new Exceptions();//new Exceptions object called e
@@ -73,12 +74,13 @@ public class Functions {
 
 	/*
 	 * Method that prints a specific object of a list
+	 * and the names of the columns, all given by the user
 	 */
 	int t=-1;
 	public void print(int list, int num2) {
 		if (num2==0) {
 			t++;
-			for (int i=0;i<names[1].length;i++) {
+			for (int i=0;i<names[t].length;i++) {
 				System.out.print("\t"+names[t][i]+"\t");
 			}
 			System.out.println("\t");
@@ -152,7 +154,7 @@ public class Functions {
 	 * Method that prints the menu to the screen and returns the choice of the user
 	 */
 	public int choiceForFunctions() {
-		e.display("Enter: 1 to add, 2 to show, 3 to delete, 4 to change data");
+		e.display("Enter: 1 to add, 2 to show, 3 to delete, 4 to change data,5 to end programm and save it on a file");
 		int choice=e.NotIntegerException();//InputMisMatchException is only checked here
 		return choice;
 
@@ -188,6 +190,36 @@ public class Functions {
 				System.out.print("Enter name for the #"+(i+1)+" table and #"+(j+1)+" column:");
 				names[i][j]=input.next();
 			}
+		}
+	}
+	/*
+	 * Method to add to an already existing file named by the user
+	 * file has the same output as the print choice above
+	 */
+	public void fileAdd(String name){
+		try {
+			PrintWriter out = new PrintWriter("C:\\Users/Public\\"+ name); //getting access to the right file
+			for (int i = 0; i < lists.length; i++) {
+				out.println("\t\t\t\tTable " + (i + 1));
+				for (int j = 0; j < lists[i].size(); j++) {
+					if (j==0){
+						for (int k=0;k<names[i].length;k++) {
+							out.print("\t"+names[i][k]+"\t");
+						}
+						out.println("\t");
+					}
+					out.print("|");
+					String x[] = lists[i].get(j).getLine();
+					for (int a=0;a<x.length;a++) {
+						out.print("\t" + x[a] + "\t|");
+					}
+					out.println("\t");
+				}
+				out.println("\t");
+			}
+			out.close();
+		}catch(IOException e) {
+			System.out.println("Error!");
 		}
 	}
 }
