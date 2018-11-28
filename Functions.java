@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Functions {
 	Exceptions e=new Exceptions();//new Exceptions object called e
 	int[] features;
+	String names[][];
 	private static ArrayList<ArrayListLine> lists[]; // array that contains array lists
 	private static Scanner input = new Scanner(System.in); // new Scanner object
 
@@ -73,7 +74,16 @@ public class Functions {
 	/*
 	 * Method that prints a specific object of a list
 	 */
+	int t=-1;
 	public void print(int list, int num2) {
+		if (num2==0) {
+			t++;
+			for (int i=0;i<names[1].length;i++) {
+				System.out.print("\t"+names[t][i]+"\t");
+			}
+			System.out.println("\t");
+			System.out.println("");
+		}
 		lists[list].get(num2).printLine();
 	}
 
@@ -83,7 +93,7 @@ public class Functions {
 	 */
 	public void printChoice() {
 		for (int i = 0; i < lists.length; i++) {
-			System.out.println("\tTable " + (i + 1));
+			System.out.println("\t\t\t\tTable " + (i + 1));
 			for (int j = 0; j < lists[i].size(); j++) {
 				print(i, j);
 			}
@@ -102,7 +112,7 @@ public class Functions {
 	 * Method that allows a user to change a specific column of a specific line of a
 	 * specific table or a whole line .Asks user to choose what he wants
 	 * Then he inputs the number of table and number of line
-	 * if he chooses to change the whole line , he inputs all the different columns 
+	 * if he chooses to change the whole line , he inputs all the different columns
 	 * otherwise he clarifies which column he wants to change and goes on to change it
 	 *  This method uses the method change of class Functions to do so
 	 */
@@ -160,6 +170,24 @@ public class Functions {
 			e.display("Enter a positive amount of columns for table " + (i + 1) + ": ");
 			columnPerTable[i] = e.NotIntegerException();
 		}
+		addNames(columnPerTable);
 		return columnPerTable;
+	}
+
+	/*
+	 * Method to create an two-dimension array with lines the number of tables
+	 * the user wants and columns the number of columns of the specific table.
+	 * The user gives the names for each table and column and the method inserts
+	 * these names into the tho-dimension array names[][]
+	 */
+	public void addNames(int []columnPerTable) {
+		names = new String[columnPerTable.length][];
+		for (int i=0;i<columnPerTable.length;i++) {
+			names[i]=new String[columnPerTable[i]];
+			for (int j=0;j<names[i].length;j++) {
+				System.out.print("Enter name for the #"+(i+1)+" table and #"+(j+1)+" column:");
+				names[i][j]=input.next();
+			}
+		}
 	}
 }
