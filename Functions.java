@@ -43,7 +43,7 @@ public class Functions {
 		tableAdd=e.OutOfBoundsException(lists,tableAdd);//guarantees that InputMismatchException or ArrayOutOfBoundsException is not thrown
 		String[] newObject = new String[arrayNumberColumns[tableAdd - 1]];
 		for (int i = 0; i < arrayNumberColumns[tableAdd - 1]; i++) {
-			System.out.print("Enter something for column " + (i + 1) + ": ");
+			System.out.print("Enter something for column " + names[tableAdd - 1][i] + ": ");
 			newObject[i] = input.next();
 		}
 		ArrayListLine xx = new ArrayListLine(newObject);
@@ -76,11 +76,10 @@ public class Functions {
 	 * Method that prints a specific object of a list
 	 * and the names of the columns, all given by the user
 	 */
-	int t=-1;
-	public void print(int list, int num2) {
+	public void print(int list, int num2 , int t) {
 		if (num2==0) {
 			t++;
-			for (int i=0;i<names[t].length;i++) {
+			for (int i=0; i< names[t].length; i++){
 				System.out.print("\t"+names[t][i]+"\t");
 			}
 			System.out.println("\t");
@@ -97,7 +96,7 @@ public class Functions {
 		for (int i = 0; i < lists.length; i++) {
 			System.out.println("\t\t\t\tTable " + (i + 1));
 			for (int j = 0; j < lists[i].size(); j++) {
-				print(i, j);
+				print(i, j , -1);
 			}
 			System.out.println();
 		}
@@ -219,20 +218,6 @@ public class Functions {
 			}
 			out.close();
 		}catch(IOException e) {
-			System.out.println("Error!");
-		}
-	}
-	/*
-	 * Method to save the database as a file
-	 */
-	public void saveFile() {
-		try {
-			System.out.println("Enter the name of the file you want to save the database:");
-			String name=input.next();
-			FileWriter file = new FileWriter("C:\\Users/Public\\"+ name); //creates the file with name given by the user
-			fileAdd(name);
-			System.out.println("Congratulations! You can now find the database in C:\\Users/Public\\" + name); //informs the user where to find the file
-		} catch (IOException e) {
 			System.out.println("Error!");
 		}
 	}
