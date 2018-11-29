@@ -11,6 +11,7 @@ public class Functions {
 	Exceptions e=new Exceptions();//new Exceptions object called e
 	int[] features;
 	String names[][];
+	String namesT[];
 	private static ArrayList<ArrayListLine> lists[]; // array that contains array lists
 	private static Scanner input = new Scanner(System.in); // new Scanner object
 
@@ -94,7 +95,7 @@ public class Functions {
 	 */
 	public void printChoice() {
 		for (int i = 0; i < lists.length; i++) {
-			System.out.println("\t\t\t\tTable " + (i + 1));
+			System.out.println("\t\t\t\t" + namesT[i]);
 			for (int j = 0; j < lists[i].size(); j++) {
 				print(i, j , -1);
 			}
@@ -199,7 +200,7 @@ public class Functions {
 		try {
 			PrintWriter out = new PrintWriter("C:\\Users/Public\\"+ name); //getting access to the right file
 			for (int i = 0; i < lists.length; i++) {
-				out.println("\t\t\t\tTable " + (i + 1));
+				out.println("\t\t\t\t" + namesT[i]);
 				for (int j = 0; j < lists[i].size(); j++) {
 					if (j==0){
 						for (int k=0;k<names[i].length;k++) {
@@ -219,6 +220,14 @@ public class Functions {
 			out.close();
 		}catch(IOException e) {
 			System.out.println("Error!");
+		}
+	}
+
+	public void nameTables(int tables) {
+		namesT=new String[tables];
+		for (int i =0;i<tables;i++) {
+			System.out.println("Enter name for the #"+(i+1)+" table:");
+			namesT[i]=input.next();
 		}
 	}
 }
