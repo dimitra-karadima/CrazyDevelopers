@@ -77,11 +77,10 @@ public class Functions {
 	 * Method that prints a specific object of a list
 	 * and the names of the columns, all given by the user
 	 */
-	public void print(int list, int num2 , int t) {
+	public void print(int list, int num2) {
 		if (num2==0) {
-			t++;
-			for (int i=0; i< names[t].length; i++){
-				System.out.print("\t"+names[t][i]+"\t");
+			for (int i=0; i< names[list].length; i++){
+				System.out.print("\t"+names[list][i]+"\t");
 			}
 			System.out.println("\t");
 			System.out.println("");
@@ -97,7 +96,7 @@ public class Functions {
 		for (int i = 0; i < lists.length; i++) {
 			System.out.println("\t\t\t\t" + namesT[i]);
 			for (int j = 0; j < lists[i].size(); j++) {
-				print(i, j , -1);
+				print(i, j);
 			}
 			System.out.println();
 		}
