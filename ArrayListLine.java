@@ -31,13 +31,15 @@ public class ArrayListLine {
 		}
 		System.out.println("\t");
 	}
+
 	/*
-	 * Method that returns specific Line in an array, will be used in the class Functions
+	 * Method that returns specific Line in an array, will be used in the class
+	 * Functions
 	 */
-	public String[] getLine(){
-		String x[]=new String[line.length];
+	public String[] getLine() {
+		String x[] = new String[line.length];
 		for (int i = 0; i < line.length; i++) {
-			x[i]=line[i];
+			x[i] = line[i];
 		}
 		return x;
 	}

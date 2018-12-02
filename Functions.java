@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.io.*;
 
 public class Functions {
-	Exceptions e=new Exceptions();//new Exceptions object called e
+	Exceptions e = new Exceptions();// new Exceptions object called e
 	int[] features;
 	String names[][];
 	String namesT[];
@@ -38,10 +38,11 @@ public class Functions {
 	 * it creates a new line using the addLine(...) method
 	 */
 	public void addChoice(int[] arrayNumberColumns) {
-		features=arrayNumberColumns;
-		e.display("Enter number of table you wish to add a new object: ");//method from exceptions called
-		int tableAdd = e.NotIntegerException();//guarantees that InputMismatchException is not thrown
-		tableAdd=e.OutOfBoundsException(lists,tableAdd);//guarantees that InputMismatchException or ArrayOutOfBoundsException is not thrown
+		features = arrayNumberColumns;
+		e.display("Enter number of table you wish to add a new object: ");// method from exceptions called
+		int tableAdd = e.NotIntegerException();// guarantees that InputMismatchException is not thrown
+		tableAdd = e.OutOfBoundsException(lists, tableAdd);// guarantees that InputMismatchException or
+															// ArrayOutOfBoundsException is not thrown
 		String[] newObject = new String[arrayNumberColumns[tableAdd - 1]];
 		for (int i = 0; i < arrayNumberColumns[tableAdd - 1]; i++) {
 			System.out.print("Enter something for column " + names[tableAdd - 1][i] + ": ");
@@ -66,21 +67,21 @@ public class Functions {
 	public void deleteChoice() {
 		e.display("Select list to delete an item: ");
 		int list = e.NotIntegerException();
-		list=e.OutOfBoundsException(lists,list);
+		list = e.OutOfBoundsException(lists, list);
 		e.display("Select number of item: ");
 		int item = e.NotIntegerException();
-		item=e.OutOfBoundsException(lists,item,list);
+		item = e.OutOfBoundsException(lists, item, list);
 		delete(item - 1, list - 1);
 	}
 
 	/*
-	 * Method that prints a specific object of a list
-	 * and the names of the columns, all given by the user
+	 * Method that prints a specific object of a list and the names of the columns,
+	 * all given by the user
 	 */
 	public void print(int list, int num2) {
-		if (num2==0) {
-			for (int i=0; i< names[list].length; i++){
-				System.out.print("\t"+names[list][i]+"\t");
+		if (num2 == 0) {
+			for (int i = 0; i < names[list].length; i++) {
+				System.out.print("\t" + names[list][i] + "\t");
 			}
 			System.out.println("\t");
 			System.out.println("");
@@ -111,38 +112,38 @@ public class Functions {
 
 	/*
 	 * Method that allows a user to change a specific column of a specific line of a
-	 * specific table or a whole line .Asks user to choose what he wants
-	 * Then he inputs the number of table and number of line
-	 * if he chooses to change the whole line , he inputs all the different columns
-	 * otherwise he clarifies which column he wants to change and goes on to change it
-	 *  This method uses the method change of class Functions to do so
+	 * specific table or a whole line .Asks user to choose what he wants Then he
+	 * inputs the number of table and number of line if he chooses to change the
+	 * whole line , he inputs all the different columns otherwise he clarifies which
+	 * column he wants to change and goes on to change it This method uses the
+	 * method change of class Functions to do so
 	 */
 	public void changeChoice(int[] arrayNumberColumns) {
 		System.out.print("Select 1 to change a whole line and 2 to change a specific column: ");
 		int choiceChange = input.nextInt();
-		while (choiceChange!=1 && choiceChange!=2) {
+		while (choiceChange != 1 && choiceChange != 2) {
 			System.out.print("Invalid choice, enter 1 or 2: ");
 			choiceChange = input.nextInt();
 		}
 		e.display("Select table to change an item from : ");
 		int table = e.NotIntegerException();
-		table=e.OutOfBoundsException(lists,table);
+		table = e.OutOfBoundsException(lists, table);
 		e.display("Select the line of item: ");
 		int item = e.NotIntegerException();
-		item=e.OutOfBoundsException(lists,item,table);
+		item = e.OutOfBoundsException(lists, item, table);
 		if (choiceChange == 1) {
 			String[] newObject = new String[arrayNumberColumns[table - 1]];
 			for (int i = 0; i < arrayNumberColumns[table - 1]; i++) {
 				System.out.print("Enter something for column " + (i + 1) + ": ");
 				newObject[i] = input.next();
 			}
-			for (int i=0; i<arrayNumberColumns[table - 1]; i++) {
+			for (int i = 0; i < arrayNumberColumns[table - 1]; i++) {
 				change(table - 1, item - 1, i, newObject[i]);
 			}
 		} else {
 			e.display("Select the column of the item: ");
 			int col = e.NotIntegerException();
-			col=e.OutOfBoundsException(features,col,table);
+			col = e.OutOfBoundsException(features, col, table);
 			System.out.print("Enter new value: ");
 			String newValue = input.next();
 			change(table - 1, item - 1, col - 1, newValue);
@@ -154,7 +155,7 @@ public class Functions {
 	 */
 	public int choiceForFunctions() {
 		e.display("Enter: 1 to add, 2 to show, 3 to delete, 4 to change data,5 to end programm and save it on a file");
-		int choice=e.NotIntegerException();//InputMisMatchException is only checked here
+		int choice = e.NotIntegerException();// InputMisMatchException is only checked here
 		return choice;
 
 	}
@@ -176,40 +177,41 @@ public class Functions {
 	}
 
 	/*
-	 * Method to create an two-dimension array with lines the number of tables
-	 * the user wants and columns the number of columns of the specific table.
-	 * The user gives the names for each table and column and the method inserts
-	 * these names into the tho-dimension array names[][]
+	 * Method to create an two-dimension array with lines the number of tables the
+	 * user wants and columns the number of columns of the specific table. The user
+	 * gives the names for each table and column and the method inserts these names
+	 * into the tho-dimension array names[][]
 	 */
-	public void addNames(int []columnPerTable) {
+	public void addNames(int[] columnPerTable) {
 		names = new String[columnPerTable.length][];
-		for (int i=0;i<columnPerTable.length;i++) {
-			names[i]=new String[columnPerTable[i]];
-			for (int j=0;j<names[i].length;j++) {
-				System.out.print("Enter name for the #"+(i+1)+" table and #"+(j+1)+" column:");
-				names[i][j]=input.next();
+		for (int i = 0; i < columnPerTable.length; i++) {
+			names[i] = new String[columnPerTable[i]];
+			for (int j = 0; j < names[i].length; j++) {
+				System.out.print("Enter name for the #" + (i + 1) + " table and #" + (j + 1) + " column:");
+				names[i][j] = input.next();
 			}
 		}
 	}
+
 	/*
-	 * Method to add to an already existing file named by the user
-	 * file has the same output as the print choice above
+	 * Method to add to an already existing file named by the user file has the same
+	 * output as the print choice above
 	 */
-	public void fileAdd(String name){
+	public void fileAdd(String name) {
 		try {
-			PrintWriter out = new PrintWriter("C:\\Users/Public\\"+ name); //getting access to the right file
+			PrintWriter out = new PrintWriter("C:\\Users/Public\\" + name); // getting access to the right file
 			for (int i = 0; i < lists.length; i++) {
 				out.println("\t\t\t\t" + namesT[i]);
 				for (int j = 0; j < lists[i].size(); j++) {
-					if (j==0){
-						for (int k=0;k<names[i].length;k++) {
-							out.print("\t"+names[i][k]+"\t");
+					if (j == 0) {
+						for (int k = 0; k < names[i].length; k++) {
+							out.print("\t" + names[i][k] + "\t");
 						}
 						out.println("\t");
 					}
 					out.print("|");
 					String x[] = lists[i].get(j).getLine();
-					for (int a=0;a<x.length;a++) {
+					for (int a = 0; a < x.length; a++) {
 						out.print("\t" + x[a] + "\t|");
 					}
 					out.println("\t");
@@ -217,16 +219,16 @@ public class Functions {
 				out.println("\t");
 			}
 			out.close();
-		}catch(IOException e) {
+		} catch (IOException e) {
 			System.out.println("Error!");
 		}
 	}
 
 	public void nameTables(int tables) {
-		namesT=new String[tables];
-		for (int i =0;i<tables;i++) {
-			System.out.println("Enter name for the #"+(i+1)+" table:");
-			namesT[i]=input.next();
+		namesT = new String[tables];
+		for (int i = 0; i < tables; i++) {
+			System.out.println("Enter name for the #" + (i + 1) + " table:");
+			namesT[i] = input.next();
 		}
 	}
 }
