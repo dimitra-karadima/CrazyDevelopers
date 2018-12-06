@@ -68,10 +68,14 @@ public class Functions {
 		e.display("Select list to delete an item: ");
 		int list = e.NotIntegerException();
 		list = e.OutOfBoundsException(lists, list);
-		e.display("Select number of item: ");
-		int item = e.NotIntegerException();
-		item = e.OutOfBoundsException(lists, item, list);
-		delete(item - 1, list - 1);
+		if (e.NoDataBaseException(lists,list-1)) {
+			System.out.println("This list has no data!You first have to add data for you to proceed to this action!");
+		}else {
+			e.display("Select number of item: ");
+			int item = e.NotIntegerException();
+			item = e.OutOfBoundsException(lists, item, list);
+			delete(item - 1, list - 1);
+		}
 	}
 
 	/*
@@ -128,25 +132,29 @@ public class Functions {
 		e.display("Select table to change an item from : ");
 		int table = e.NotIntegerException();
 		table = e.OutOfBoundsException(lists, table);
-		e.display("Select the line of item: ");
-		int item = e.NotIntegerException();
-		item = e.OutOfBoundsException(lists, item, table);
-		if (choiceChange == 1) {
-			String[] newObject = new String[arrayNumberColumns[table - 1]];
-			for (int i = 0; i < arrayNumberColumns[table - 1]; i++) {
-				System.out.print("Enter something for column " + (i + 1) + ": ");
-				newObject[i] = input.next();
+		if (e.NoDataBaseException(lists,table -1)) {
+			System.out.println("This list has no data!You first have to add data for you to proceed to this action!");
+		} else { //if there is data in the list
+			e.display("Select the line of item: ");
+			int item = e.NotIntegerException();
+			item = e.OutOfBoundsException(lists, item, table);
+			if (choiceChange == 1) {
+				String[] newObject = new String[arrayNumberColumns[table - 1]];
+				for (int i = 0; i < arrayNumberColumns[table - 1]; i++) {
+					System.out.print("Enter something for column " + (i + 1) + ": ");
+					newObject[i] = input.next();
+				}
+				for (int i = 0; i < arrayNumberColumns[table - 1]; i++) {
+					change(table - 1, item - 1, i, newObject[i]);
+				}
+			} else {
+				e.display("Select the column of the item: ");
+				int col = e.NotIntegerException();
+				col = e.OutOfBoundsException(features, col, table);
+				System.out.print("Enter new value: ");
+				String newValue = input.next();
+				change(table - 1, item - 1, col - 1, newValue);
 			}
-			for (int i = 0; i < arrayNumberColumns[table - 1]; i++) {
-				change(table - 1, item - 1, i, newObject[i]);
-			}
-		} else {
-			e.display("Select the column of the item: ");
-			int col = e.NotIntegerException();
-			col = e.OutOfBoundsException(features, col, table);
-			System.out.print("Enter new value: ");
-			String newValue = input.next();
-			change(table - 1, item - 1, col - 1, newValue);
 		}
 	}
 

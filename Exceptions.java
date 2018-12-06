@@ -131,4 +131,16 @@ public class Exceptions {
 		}
 		return x1;
 	}
+
+	/*
+	 * Method used to check if a specific list has data
+	 * If there is no data the method returns true otherwise returns false
+	 */
+	public boolean NoDataBaseException(ArrayList<ArrayListLine>[] lists, int list) {
+			boolean exit=false;
+			if (lists[list].size() == 0) {
+				exit=true;
+			}
+			return exit;
+	}
 }
