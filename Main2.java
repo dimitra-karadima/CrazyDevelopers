@@ -7,23 +7,27 @@ import java.io.*;
 
 public class Main2 {
 	private static Scanner input = new Scanner(System.in); // new Scanner object
-
+	static String testnames[][];
+	static String testnamesT[];
 	public static void main(String[] args) {
 		int exitCode = 0;
-		int numTables = openingMenu(); // User enters amount of tables for data base
+		Menu menu = new Menu(); //new Menu object called menu
+		int numTables = menu.openingMenu(); // User enters amount of tables for data base
 		Functions data = new Functions(numTables); // new Functions object called data
-		data.nameTables(numTables);
-		int[] arrayNumberColumns = data.menuColumns(numTables);
+		menu.nameTables(numTables);
+		int[] arrayNumberColumns = menu.menuColumns(numTables);
 		// Creation of an array that contains the amount of columns for every table
+		testnames = menu.getNames();
+		testnamesT = menu.getNamesT();
 
-		while (exitCode == 0) {
-			switch (data.choiceForFunctions()) { // Condition
+		while (exitCode == 0) { //loops until user chooses to save the DataBase to a file
+			switch (menu.choiceForFunctions()) { // Condition
 			case (1): { // case of adding a new object
-				data.addChoice(arrayNumberColumns);
+				data.addChoice(arrayNumberColumns,testnames);
 				break;
 			}
 			case (2): { // case of printing data
-				data.printChoice();
+				data.printChoice(testnamesT, testnames);
 				break;
 			}
 			case (3): { // case of deleting data
@@ -41,10 +45,10 @@ public class Main2 {
 					String name = input.next();
 					FileWriter file = new FileWriter("C:\\Users/Public\\" + name); // creates the file with name given
 																					// by the user
-					data.fileAdd(name);
+					data.fileAdd(name, testnamesT, testnames);
 					System.out.println("Congratulations! You can now find the database in C:\\Users/Public\\" + name); // informs
-					input.close();		//releases useless resource																				// the
-					file.close();		//releases useless resource																								// user
+					input.close();		//releases useless resource														// the
+					file.close();		//releases useless resource														// user
 																														// where
 																														// to
 																														// find
@@ -61,20 +65,5 @@ public class Main2 {
 			}
 			}
 		}
-	}
-
-	/*
-	 * Method that asks user to enter the number of tables for the database and
-	 * return this integer
-	 */
-	public static int openingMenu() {
-		Exceptions e = new Exceptions();
-		e.display("Enter amount of tables: "); // tables check
-		int tables = e.NotIntegerException();
-		while (tables <= 0) {
-			e.display("Enter positive quantity: ");
-			tables = e.NotIntegerException();
-		}
-		return tables;
 	}
 }

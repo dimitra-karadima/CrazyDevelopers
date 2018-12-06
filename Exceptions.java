@@ -1,3 +1,8 @@
+
+/*
+ * Class that will be used to check whether an Exception is thrown or not
+ * to guarantee that the programm will end normally
+ */
 import java.util.*;
 
 public class Exceptions {
@@ -131,16 +136,15 @@ public class Exceptions {
 		}
 		return x1;
 	}
-
 	/*
-	 * Method used to check if a specific list has data
-	 * If there is no data the method returns true otherwise returns false
+	 * Method used to check if there is data to a specific table
+	 * If there is no data in the DataBase return true otherwise false
 	 */
 	public boolean NoDataBaseException(ArrayList<ArrayListLine>[] lists, int list) {
-			boolean exit=false;
-			if (lists[list].size() == 0) {
-				exit=true;
-			}
-			return exit;
+		boolean exit=false;
+		if (lists[list].size() == 0) {
+			exit=true;
+		}
+		return exit;
 	}
 }

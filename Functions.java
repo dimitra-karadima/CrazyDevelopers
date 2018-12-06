@@ -1,7 +1,7 @@
 
-/*Class that contains necessary functions for our database:
+/*
+ *Class that contains necessary functions for our database:
  * input of data , data presentation, delete and change of data
- *
  */
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,6 +9,7 @@ import java.io.*;
 
 public class Functions {
 	Exceptions e = new Exceptions();// new Exceptions object called e
+	Menu m = new Menu();
 	int[] features;
 	String names[][];
 	String namesT[];
@@ -37,7 +38,7 @@ public class Functions {
 	 * table to add a new line and then asks for the Strings for every column After
 	 * it creates a new line using the addLine(...) method
 	 */
-	public void addChoice(int[] arrayNumberColumns) {
+	public void addChoice(int[] arrayNumberColumns,String[][] names) {
 		features = arrayNumberColumns;
 		e.display("Enter number of table you wish to add a new object: ");// method from exceptions called
 		int tableAdd = e.NotIntegerException();// guarantees that InputMismatchException is not thrown
@@ -51,6 +52,7 @@ public class Functions {
 		ArrayListLine xx = new ArrayListLine(newObject);
 		addLine(xx, tableAdd - 1);
 	}
+
 
 	/*
 	 * Method that deletes an object(line)
@@ -68,9 +70,9 @@ public class Functions {
 		e.display("Select list to delete an item: ");
 		int list = e.NotIntegerException();
 		list = e.OutOfBoundsException(lists, list);
-		if (e.NoDataBaseException(lists,list-1)) {
+		if (e.NoDataBaseException(lists, list -1)) {
 			System.out.println("This list has no data!You first have to add data for you to proceed to this action!");
-		}else {
+		} else {
 			e.display("Select number of item: ");
 			int item = e.NotIntegerException();
 			item = e.OutOfBoundsException(lists, item, list);
@@ -82,7 +84,7 @@ public class Functions {
 	 * Method that prints a specific object of a list and the names of the columns,
 	 * all given by the user
 	 */
-	public void print(int list, int num2) {
+	public void print(int list, int num2, String[][] names) {
 		if (num2 == 0) {
 			for (int i = 0; i < names[list].length; i++) {
 				System.out.print("\t" + names[list][i] + "\t");
@@ -97,11 +99,11 @@ public class Functions {
 	 * Method that prints all the lines and columns(all the objects ArrayListLine
 	 * there are) of the existing tables Uses the method print of Functions to do so
 	 */
-	public void printChoice() {
+	public void printChoice(String[] namesT, String[][] names) {
 		for (int i = 0; i < lists.length; i++) {
 			System.out.println("\t\t\t\t" + namesT[i]);
 			for (int j = 0; j < lists[i].size(); j++) {
-				print(i, j);
+				print(i, j,names);
 			}
 			System.out.println();
 		}
@@ -134,7 +136,7 @@ public class Functions {
 		table = e.OutOfBoundsException(lists, table);
 		if (e.NoDataBaseException(lists,table -1)) {
 			System.out.println("This list has no data!You first have to add data for you to proceed to this action!");
-		} else { //if there is data in the list
+		}else {
 			e.display("Select the line of item: ");
 			int item = e.NotIntegerException();
 			item = e.OutOfBoundsException(lists, item, table);
@@ -158,54 +160,12 @@ public class Functions {
 		}
 	}
 
-	/*
-	 * Method that prints the menu to the screen and returns the choice of the user
-	 */
-	public int choiceForFunctions() {
-		e.display("Enter: 1 to add, 2 to show, 3 to delete, 4 to change data,5 to end programm and save it on a file");
-		int choice = e.NotIntegerException();// InputMisMatchException is only checked here
-		return choice;
-
-	}
-
-	/*
-	 * Method to create an array with columns the number of columns of the specific
-	 * position of the table by asking user to enter positive numbers for example if
-	 * columnPerTable={3,5,1} means that table 1 has 3 columns , table 2 has 5
-	 * columns, table 3 has 1 column returns this table
-	 */
-	public int[] menuColumns(int tables) {
-		int[] columnPerTable = new int[tables];
-		for (int i = 0; i < tables; i++) {
-			e.display("Enter a positive amount of columns for table " + (i + 1) + ": ");
-			columnPerTable[i] = e.NotIntegerException();
-		}
-		addNames(columnPerTable);
-		return columnPerTable;
-	}
-
-	/*
-	 * Method to create an two-dimension array with lines the number of tables the
-	 * user wants and columns the number of columns of the specific table. The user
-	 * gives the names for each table and column and the method inserts these names
-	 * into the tho-dimension array names[][]
-	 */
-	public void addNames(int[] columnPerTable) {
-		names = new String[columnPerTable.length][];
-		for (int i = 0; i < columnPerTable.length; i++) {
-			names[i] = new String[columnPerTable[i]];
-			for (int j = 0; j < names[i].length; j++) {
-				System.out.print("Enter name for the #" + (i + 1) + " table and #" + (j + 1) + " column:");
-				names[i][j] = input.next();
-			}
-		}
-	}
 
 	/*
 	 * Method to add to an already existing file named by the user file has the same
 	 * output as the print choice above
 	 */
-	public void fileAdd(String name) {
+	public void fileAdd(String name, String[]namesT, String[][] names) {
 		try {
 			PrintWriter out = new PrintWriter("C:\\Users/Public\\" + name); // getting access to the right file
 			for (int i = 0; i < lists.length; i++) {
@@ -229,14 +189,6 @@ public class Functions {
 			out.close();
 		} catch (IOException e) {
 			System.out.println("Error!");
-		}
-	}
-
-	public void nameTables(int tables) {
-		namesT = new String[tables];
-		for (int i = 0; i < tables; i++) {
-			System.out.println("Enter name for the #" + (i + 1) + " table:");
-			namesT[i] = input.next();
 		}
 	}
 }

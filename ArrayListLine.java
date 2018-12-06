@@ -1,6 +1,5 @@
 /* ArrayListLine class
  *that will be used as a whole different  line in our database
-
  */
 public class ArrayListLine {
 	private String[] line;
