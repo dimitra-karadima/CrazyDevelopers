@@ -47,8 +47,8 @@ public class Main2 {
 																					// by the user
 					data.fileAdd(name, testnamesT, testnames);
 					System.out.println("Congratulations! You can now find the database in C:\\Users/Public\\" + name); // informs
-					input.close();		//releases useless resource														// the
-					file.close();		//releases useless resource														// user
+					file.close();	//releases useless resource															// the
+																														// user
 																														// where
 																														// to
 																														// find
@@ -57,6 +57,7 @@ public class Main2 {
 				} catch (IOException e) {
 					System.out.println("Error!");
 				}
+				input.close();			//releases useless resource
 				exitCode = 1; // ends programm
 				break;
 			}

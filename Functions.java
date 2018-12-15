@@ -125,11 +125,11 @@ public class Functions {
 	 * method change of class Functions to do so
 	 */
 	public void changeChoice(int[] arrayNumberColumns) {
-		System.out.print("Select 1 to change a whole line and 2 to change a specific column: ");
-		int choiceChange = input.nextInt();
+		e.display("Select 1 to change a whole line and 2 to change a specific column: ");
+		int choiceChange = e.NotIntegerException();
 		while (choiceChange != 1 && choiceChange != 2) {
-			System.out.print("Invalid choice, enter 1 or 2: ");
-			choiceChange = input.nextInt();
+			e.display("Invalid choice, enter 1 or 2: ");
+			choiceChange = e.NotIntegerException();
 		}
 		e.display("Select table to change an item from : ");
 		int table = e.NotIntegerException();

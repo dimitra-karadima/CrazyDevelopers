@@ -1,6 +1,6 @@
 
 /*
- * Class that contains all the menus needed for the programm
+ * Class that contains all the menus needed for the program 
  */
 import java.util.*;
 public class Menu {
@@ -18,7 +18,7 @@ public class Menu {
 		Exceptions e = new Exceptions();
 		e.display("Enter amount of tables: "); // tables check
 		int tables = e.NotIntegerException();
-		while (tables <= 0) {
+		while (tables <= 0) {			//checks that amount of tables is bigger than 0 and not an integer
 			e.display("Enter positive quantity: ");
 			tables = e.NotIntegerException();
 		}
@@ -29,7 +29,7 @@ public class Menu {
 	 * Method that prints the menu to the screen and returns the choice of the user
 	 */
 	public int choiceForFunctions() {
-		e.display("Enter: 1 to add, 2 to show, 3 to delete, 4 to change data,5 to end programm and save it on a file");
+		e.display("Enter: 1 to add, 2 to show, 3 to delete, 4 to change data, 5 to end programm and save it on a file");
 		int choice = e.NotIntegerException();// InputMisMatchException is only checked here
 		return choice;
 	}
@@ -44,7 +44,12 @@ public class Menu {
 		columnPerTable = new int[tables];
 		for (int i = 0; i < tables; i++) {
 			e.display("Enter a positive amount of columns for table " + (i + 1) + ": ");
-			columnPerTable[i] = e.NotIntegerException();
+			int amount=e.NotIntegerException();
+			while (amount<1) {						//checks that amount is bigger than 0 and an integer
+				e.display("Enter a positive amount of columns for table " + (i + 1) + ": ");
+				amount = e.NotIntegerException();
+			}
+			columnPerTable[i]=amount;
 		}
 		addNames(columnPerTable);
 		return columnPerTable;

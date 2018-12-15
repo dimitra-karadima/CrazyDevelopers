@@ -52,14 +52,14 @@ public class Exceptions {
 						System.out.println(x);
 						Scanner input = new Scanner(System.in);
 						x1 = input.nextInt();
-						if (x1 <= lists.length) {
+						if (x1 <= lists.length &x1>0) {
 							exitcode = 1;
 						}
 					} catch (InputMismatchException e) {
 						System.out.println("Wrong type!");
 						exitcode = 0;
 					}
-				} else if (x1 <= lists.length) {// checks the argument of the method
+				} else if (x1 <= lists.length &x1>0) {// checks the argument of the method
 					exitcode = 1;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
@@ -84,7 +84,7 @@ public class Exceptions {
 						System.out.println(x);
 						Scanner input = new Scanner(System.in);
 						x1 = input.nextInt();
-						if (x1 <= lists[list - 1].size()) {
+						if (x1 <= lists[list - 1].size() &&x1>0) {
 							exitcode = 1;
 						}
 					} catch (InputMismatchException e) {
@@ -93,7 +93,7 @@ public class Exceptions {
 					}
 				}
 				i++;
-				if (x1 <= lists[list - 1].size()) {
+				if (x1 <= lists[list - 1].size() &&x1>0) {
 					exitcode = 1;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
@@ -118,7 +118,7 @@ public class Exceptions {
 						System.out.println(x);
 						Scanner input = new Scanner(System.in);
 						x1 = input.nextInt();
-						if (x1 <= arrayNumberColumns[list - 1]) {
+						if (x1 <= arrayNumberColumns[list - 1]&&x1>0) {
 							exitcode = 1;
 						}
 					} catch (InputMismatchException e) {
@@ -127,7 +127,7 @@ public class Exceptions {
 					}
 				}
 				i++;
-				if (x1 <= arrayNumberColumns[list - 1]) {
+				if (x1 <= arrayNumberColumns[list - 1]&&x1>0) {
 					exitcode = 1;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
@@ -147,4 +147,6 @@ public class Exceptions {
 		}
 		return exit;
 	}
+	
+	//public int 
 }
