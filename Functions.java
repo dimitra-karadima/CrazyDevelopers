@@ -87,7 +87,7 @@ public class Functions {
 	public void print(int list, int num2, String[][] names) {
 		if (num2 == 0) {
 			for (int i = 0; i < names[list].length; i++) {
-				System.out.print("\t" + names[list][i] + "\t");
+				System.out.printf("%15s %6s", names[list][i],"");
 			}
 			System.out.println("\t");
 			System.out.println("");
@@ -101,7 +101,7 @@ public class Functions {
 	 */
 	public void printChoice(String[] namesT, String[][] names) {
 		for (int i = 0; i < lists.length; i++) {
-			System.out.println("\t\t\t\t" + namesT[i]);
+			System.out.printf("%50s \n", namesT[i]);
 			for (int j = 0; j < lists[i].size(); j++) {
 				print(i, j,names);
 			}

@@ -26,7 +26,7 @@ public class ArrayListLine {
 	public void printLine() {
 		System.out.print("|");
 		for (int i = 0; i < line.length; i++) {
-			System.out.print("\t" + line[i] + "\t|");
+			System.out.printf("%15s %5s|",line[i],"");
 		}
 		System.out.println("\t");
 	}
