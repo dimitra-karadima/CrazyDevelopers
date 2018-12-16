@@ -1,6 +1,6 @@
 
 /*
- * Class that contains all the menus needed for the program 
+ * Class that contains all the menus needed for the program
  */
 import java.util.*;
 public class Menu {
@@ -83,6 +83,32 @@ public class Menu {
 			namesT[i] = input.next();
 		}
 	}
+
+	/*
+	 * Method to declare if the user wants to save the file in a certain path
+	 * or wants to use the default one (User press 1)
+	 * The dafault path is C:\\Users/Public\\ and it is declared by us (User press 2)
+	 * Returns the choice that the user makes,which is 1 or 2
+	 */
+	public int findChoice() {
+		e.display("Enter 1 if you want it to enter the path you want to save the file in or 2 to save it to C:\\Users/Public\\ : ");
+		int choice = e.NotIntegerException();
+		while (choice < 1 || choice > 2) {
+			System.out.println("Please enter only 1 or 2!");
+			choice = e.NotIntegerException();
+		}
+		return choice;
+	}
+
+	/*
+	 * Method used only if user chooses to enter his own path
+	 * Returns path
+	 */
+	public String findPath() {
+		System.out.print("Enter the path you want to save your file in: ");
+		return input.next();
+	}
+
 	/*
 	 * Simple get methods for names[][] and namesT[]
 	 * Will be used by Main2 class

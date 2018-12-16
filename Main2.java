@@ -40,22 +40,39 @@ public class Main2 {
 				break;
 			}
 			case (5): { // case of ending loop and programm to save to file
-				try {
-					System.out.println("Enter the name of the file you want to save the database:");
-					String name = input.next();
-					FileWriter file = new FileWriter("C:\\Users/Public\\" + name); // creates the file with name given
-																					// by the user
-					data.fileAdd(name, testnamesT, testnames);
-					System.out.println("Congratulations! You can now find the database in C:\\Users/Public\\" + name); // informs
-					file.close();	//releases useless resource															// the
-																														// user
-																														// where
-																														// to
-																														// find
-																														// the
-																														// file
-				} catch (IOException e) {
-					System.out.println("Error!");
+				int exitcode = 0;
+				while (exitcode == 0) {
+					try {
+						System.out.println("Enter the name of the file you want to save the database:");
+						String name = input.next();
+						int choice = menu.findChoice();
+						String path;
+						if (choice == 2) {
+							path = "C:\\Users/Public\\";
+							System.out.println("Congratulations! You can now find the database in " + path + name); //informs
+																													//the
+																													//user
+																													//where
+																													//to
+																													//find
+																													//the
+																													//file
+						} else {
+							path = menu.findPath();
+							System.out.println("Congratulations! You can now find the file in your pc with name " + name);
+							System.out.println("If you did not give full path you will find it in this java project folder with name " + path + name);
+							//if the user does now enter correct path programm use the String path as name of the file and saves
+							//it in the same folder with this java project
+						}
+						exitcode = 1;
+						FileWriter file = new FileWriter(path + name); // creates the file with name given
+																						// by the user
+						data.fileAdd(path, name, testnamesT, testnames);
+						file.close();	//releases useless resource
+					} catch (IOException e) {
+						System.out.println("Error!Wrong path given!");
+						exitcode = 0;
+					}
 				}
 				input.close();			//releases useless resource
 				exitCode = 1; // ends programm

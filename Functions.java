@@ -165,9 +165,9 @@ public class Functions {
 	 * Method to add to an already existing file named by the user file has the same
 	 * output as the print choice above
 	 */
-	public void fileAdd(String name, String[]namesT, String[][] names) {
+	public void fileAdd(String path, String name, String[]namesT, String[][] names) {
 		try {
-			PrintWriter out = new PrintWriter("C:\\Users/Public\\" + name); // getting access to the right file
+			PrintWriter out = new PrintWriter(path + name); // getting access to the right file
 			for (int i = 0; i < lists.length; i++) {
 				out.println("\t\t\t\t" + namesT[i]);
 				for (int j = 0; j < lists[i].size(); j++) {
