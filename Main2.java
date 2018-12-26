@@ -46,7 +46,11 @@ public class Main2 {
           data.changeChoice(arrayNumberColumns);
           break;
         }
-        case (5): { // case of ending loop and programm to save to file
+        case (5): { //case of printing relational model
+          menu.printModel();
+          break;
+        }
+        case (6): { // case of ending loop and program to save to file
           int exitcode = 0;
           while (exitcode == 0) {
             try {
@@ -57,14 +61,7 @@ public class Main2 {
               if (choice == 2) {
                 path = "C:\\Users/Public\\";
                 System.out.println("Congratulations!You can now find the database in " 
-                    + path + name);//inform
-                //the
-                //user
-                //where
-                //to
-                //find
-                //the
-                //file
+                    + path + name);//inform the user where to find the file
               } else {
                 path = menu.findPath();
                 System.out.println("Congratulations! You can now find the file"

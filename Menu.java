@@ -32,7 +32,7 @@ public class Menu {
   
   public int choiceForFunctions() {
     ex.display("Enter: 1 to add, 2 to show, 3 to delete, 4 to change data, "
-        + "5 to end programm and save it on a file");
+        + "5 to print relational model, 6 to end programm and save it on a file");
     int choice = ex.notIntegerException();// InputMisMatchException is only checked here
     return choice;
   }
@@ -111,6 +111,23 @@ public class Menu {
   public String findPath() {
     System.out.print("Enter the path you want to save your file in: ");
     return input.next();
+  }
+  
+  /**
+   * Method used to print relational model
+   * it is called only if user enters 5 in the openingMenu().
+   */
+  public void printModel() {
+    for (int i = 0;i < namesT.length; i++) {
+      System.out.print(namesT[i] + "(");
+      for (int j = 0; j < names[i].length; j++) {
+        if (j == (names[i].length - 1)) {
+          System.out.println(names[i][j] + ")");
+        } else {
+          System.out.print(names[i][j] + " ,");
+        }
+      }
+    }
   }
 
   /*

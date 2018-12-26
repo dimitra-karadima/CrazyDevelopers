@@ -13,10 +13,10 @@ public class Exceptions {
   String text;
   
   /**
-    * Method that reads the choice of the user and checks to see if the value of.
-    * the choice produces the InputMismatchException and ends when the value is
-    * valid and no Exception is thrown
-  */
+   * Method that reads the choice of the user and checks to see if the value of.
+   * the choice produces the InputMismatchException and ends when the value is
+   * valid and no Exception is thrown
+   */
   public int notIntegerException() {
     int choice = 0;
     int exitcode = 0;
@@ -44,7 +44,7 @@ public class Exceptions {
    * Method that checks if the value that the user gives throws the.
    * InputMismatchException or the ArrayOutOfBoundsException and ends when none of
    * the above Exceptions are thrown
-  */
+   */
   public int outOfBoundsException(ArrayList<ArrayListLine>[] lists, int x1) {
     int exitcode = 0;
     int i = 0;
@@ -76,8 +76,8 @@ public class Exceptions {
   }
 
   /**
-    * Method used for the same reason but with one more argument because we need to.
-    * get to second dimension of the array lists
+   * Method used for the same reason but with one more argument because we need to.
+   * get to second dimension of the array lists
    */
   public int outOfBoundsException(ArrayList<ArrayListLine>[] lists, int x1, int list) {
     int exitcode = 0;
@@ -113,7 +113,7 @@ public class Exceptions {
   /**
    * Method used for the same reason but with different arguments because we need.
    * to use the features for every list
-  */
+   */
   public int outOfBoundsException(int[] arrayNumberColumns, int x1, int list) {
     int exitcode = 0;
     int i = 0;
@@ -148,7 +148,7 @@ public class Exceptions {
   /**
    * Method used to check if there is data to a specific table.
    * If there is no data in the DataBase return true otherwise false
-  */
+   */
   public boolean noDataBaseException(ArrayList<ArrayListLine>[] lists, int list) {
     boolean exit = false;
     if (lists[list].size() == 0) {
