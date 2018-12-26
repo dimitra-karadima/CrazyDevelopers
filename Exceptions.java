@@ -46,13 +46,30 @@ public class Exceptions {
    * the above Exceptions are thrown
    */
   public int outOfBoundsException(ArrayList<ArrayListLine>[] lists, int x1) {
-    int exit = 0;
-    while (exit == 0) { // guarantees that ArrayOutOfBoundsException is not thrown
-      if (x1 > lists.length || x1 < 1) {
-        display("Please insert an positive integer and less than array length");
-        x1 = notIntegerException();
-      } else {
-        exit = 1;
+    int exitcode = 0;
+    int i = 0;
+    while (exitcode == 0) { // loops until none Exception is thrown
+      try {
+        i++;
+        if (i != 1) {  // not entering the first time
+          try {  // happens only if the argument throws ArrayIndexOutBoundsException
+            System.out.println("Try again!");
+            System.out.println(text);
+            @SuppressWarnings("resource")
+            Scanner input = new Scanner(System.in);
+            x1 = input.nextInt();
+            if (x1 <= lists.length & x1 > 0) {
+              exitcode = 1;
+            }
+          } catch (InputMismatchException e) {
+            System.out.println("Wrong type!");
+            exitcode = 0;
+          }
+        } else if (x1 <= lists.length & x1 > 0) { // checks the argument of the method
+          exitcode = 1;
+        }
+      } catch (ArrayIndexOutOfBoundsException e) {
+        exitcode = 0;
       }
     }
     return x1;
@@ -63,13 +80,31 @@ public class Exceptions {
    * get to second dimension of the array lists
    */
   public int outOfBoundsException(ArrayList<ArrayListLine>[] lists, int x1, int list) {
-    int exit = 0;
-    while (exit == 0) { // guarantees that ArrayOutOfBoundsException is not thrown
-      if (x1 > lists[list].size() || x1 < 1) {
-        display("Please insert an positive integer and less than array length");
-        x1 = notIntegerException();
-      } else {
-        exit = 1;
+    int exitcode = 0;
+    int i = 0;
+    while (exitcode == 0) {
+      try {
+        if (i != 0) {
+          try {
+            System.out.println("Try again!");
+            System.out.println(text);
+            @SuppressWarnings("resource")
+            Scanner input = new Scanner(System.in);
+            x1 = input.nextInt();
+            if (x1 <= lists[list - 1].size() && x1 > 0) {
+              exitcode = 1;
+            }
+          } catch (InputMismatchException e) {
+            System.out.println("Wrong type!");
+            exitcode = 0;
+          }
+        }
+        i++;
+        if (x1 <= lists[list - 1].size() && x1 > 0) {
+          exitcode = 1;
+        }
+      } catch (ArrayIndexOutOfBoundsException e) {
+        exitcode = 0;
       }
     }
     return x1;
@@ -80,13 +115,31 @@ public class Exceptions {
    * to use the features for every list
    */
   public int outOfBoundsException(int[] arrayNumberColumns, int x1, int list) {
-    int exit = 0;
-    while (exit == 0) { // guarantees that ArrayOutOfBoundsException is not thrown
-      if (x1 > arrayNumberColumns[list] || x1 < 1) {
-        display("Please insert an positive integer and less than array length");
-        x1 = notIntegerException();
-      } else {
-        exit = 1;
+    int exitcode = 0;
+    int i = 0;
+    while (exitcode == 0) {
+      try {
+        if (i != 0) {
+          try {
+            System.out.println("Try again!");
+            System.out.println(text);
+            @SuppressWarnings("resource")
+            Scanner input = new Scanner(System.in);
+            x1 = input.nextInt();
+            if (x1 <= arrayNumberColumns[list - 1] && x1 > 0) {
+              exitcode = 1;
+            }
+          } catch (InputMismatchException e) {
+            System.out.println("Wrong type!");
+            exitcode = 0;
+          }
+        }
+        i++;
+        if (x1 <= arrayNumberColumns[list - 1] && x1 > 0) {
+          exitcode = 1;
+        }
+      } catch (ArrayIndexOutOfBoundsException e) {
+        exitcode = 0;
       }
     }
     return x1;

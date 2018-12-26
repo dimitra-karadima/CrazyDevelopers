@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import java.util.ArrayList;
+
 import java.util.Scanner;
 
 public class Functions {
@@ -47,7 +48,8 @@ public class Functions {
     ex.display("Enter number of table you wish to add a new object: ");
     // method from exceptions called
     int tableAdd = ex.notIntegerException();// guarantees that InputMismatchException is not thrown
-    tableAdd = ex.outOfBoundsException(lists, tableAdd);
+    tableAdd = ex.outOfBoundsException(lists, tableAdd);// guarantees that InputMismatchException or
+    //ArrayOutOfBoundsException is not thrown
     String[] newObject = new String[arrayNumberColumns[tableAdd - 1]];
     for (int i = 0; i < arrayNumberColumns[tableAdd - 1]; i++) {
       System.out.print("Enter something for column " + names[tableAdd - 1][i] + ": ");
@@ -57,9 +59,10 @@ public class Functions {
     addLine(xx, tableAdd - 1);
   }
 
+
   /*
-   * Method that deletes an object(line)
-   */
+* Method that deletes an object(line)
+*/
   public void delete(int rem, int num) {
     lists[num].remove(rem);
   }
