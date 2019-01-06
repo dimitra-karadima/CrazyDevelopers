@@ -5,7 +5,7 @@ package dds.gr.aueb.dmst.crazydevelopers;
  */
 
 public class  ArrayListLine {
-  private String[] line;
+  protected String[] line;
   // theoretical columns of our data base
 
   /**
@@ -46,4 +46,3 @@ public class  ArrayListLine {
     return x;
   }
 }
-

@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class Functions {
   Exceptions ex = new Exceptions();// new Exceptions object called e
   int[] features;
-  private ArrayList<ArrayListLine>[] lists; // array that contains array lists
+  protected ArrayList<ArrayListLine>[] lists; // array that contains array lists
   private static Scanner input = new Scanner(System.in); // new Scanner object
 
   /**
@@ -165,7 +165,6 @@ public class Functions {
     }
   }
 
-
   /**
    * Method to add to an already existing file named by the user file has the same
    * output as the print choice above.
@@ -197,4 +196,3 @@ public class Functions {
     }
   }
 }
-

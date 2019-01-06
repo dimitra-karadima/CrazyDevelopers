@@ -65,7 +65,7 @@ public class Exceptions {
   public int outOfBoundsException(ArrayList<ArrayListLine>[] lists, int x1, int list) {
     int exit = 0;
     while (exit == 0) { // guarantees that ArrayOutOfBoundsException is not thrown
-      if (x1 > lists[list].size() || x1 < 1) {
+      if (x1 > lists[list - 1].size() || x1 < 1) {
         display("Please insert an positive integer and less than array length");
         x1 = notIntegerException();
       } else {
@@ -82,7 +82,7 @@ public class Exceptions {
   public int outOfBoundsException(int[] arrayNumberColumns, int x1, int list) {
     int exit = 0;
     while (exit == 0) { // guarantees that ArrayOutOfBoundsException is not thrown
-      if (x1 > arrayNumberColumns[list] || x1 < 1) {
+      if (x1 > arrayNumberColumns[list - 1] || x1 < 1) {
         display("Please insert an positive integer and less than array length");
         x1 = notIntegerException();
       } else {
@@ -104,4 +104,3 @@ public class Exceptions {
     return exit;
   }
 }
-
