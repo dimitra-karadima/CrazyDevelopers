@@ -1,14 +1,9 @@
 package gr.aueb.dmst.dds.CrazyDevelopers;
 
-/*
+/**
  * Class that will be used to check whether an Exception is thrown or not
  * to guarantee that the program will end normally
  */
-/**
- * @author oneofthecraziest
- */
-
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -40,8 +35,8 @@ public class Exceptions {
     return choice;
   }
 
- /**
-  * Method that it initializes the variable x
+  /**
+  * Method that it initializes the variable x.
   * @param x string value
   */
   public void display(String x) {

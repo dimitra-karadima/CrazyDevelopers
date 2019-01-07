@@ -1,10 +1,7 @@
 package gr.aueb.dmst.dds.CrazyDevelopers;
 
-/*
- * Class that contains all the menus needed for the program
- */
 /**
- * @author oneofthecraziest
+ * Class that contains all the menus needed for the program
  */
 
 import java.util.Scanner;
@@ -16,7 +13,7 @@ public class Menu {
   int []columnPerTable;
   Scanner input = new Scanner(System.in);
   /**
-   * Method that asks user to enter the number of tables for the database and
+   * Method that asks user to enter the number of tables for the database.
    * @return this integer.
    */
   
@@ -103,7 +100,7 @@ public class Menu {
    * Returns the choice that the user makes,which is 1 or 2.
    * @return choice of customer
    */
-  public int findChoice() {
+  public String findChoice() {
     ex.display("Enter 1 if you want it to enter the path you want to save the file in"
          + " or 2 to save it to C:\\Users/Public\\ : ");
     int choice = ex.notIntegerException();
@@ -111,7 +108,11 @@ public class Menu {
       System.out.println("Please enter only 1 or 2!");
       choice = ex.notIntegerException();
     }
-    return choice;
+    if (choice == 1) {
+      return findPath();
+    } else {
+      return "C:\\Users/Public\\";
+    }
   }
 
   /*
@@ -143,7 +144,7 @@ public class Menu {
   /**
    * Simple get methods for names[][] and namesT[]
    * Will be used by Main2 class
-   * Useful for the addChoice() and printChoice()
+   * Useful for the addChoice() and printChoice().
    * @return names
    */
   public String[][] getNames() {
@@ -154,4 +155,3 @@ public class Menu {
     return namesT;
   }
 }
-

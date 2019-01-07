@@ -4,22 +4,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-/**
- * @author oneofthecraziest
- */
-
-/*
- * Main method to run the program
- */
-
 public class Main2 {
   private static Scanner input = new Scanner(System.in); // new Scanner object
   static String[][] testnames;
   static String[] testnamesT;
   /**
-   * Main method.
+   * Main method to run the program.
    * @param args String Array
    */
+  
   public static void main(String[] args) {
     Menu menu = new Menu(); //new Menu object called menu
     int numTables = menu.openingMenu(); // User enters amount of tables for data base
@@ -58,25 +51,21 @@ public class Main2 {
             try {
               System.out.println("Enter the name of the file you want to save the database:");
               String name = input.next();
-              int choice = menu.findChoice();
-              String path;
-              if (choice == 2) {
-                path = "C:\\Users/Public\\";
+              String path = menu.findChoice();
+              if (path == "C:\\Users/Public\\") {
                 System.out.println("Congratulations!You can now find the database in " 
                     + path + name);//inform the user where to find the file
               } else {
-                path = menu.findPath();
                 System.out.println("Congratulations! You can now find the file"
                     + " in your pc with name " + name);
                 System.out.println("If you did not give full path you will find"
                     + " it in this java project folder with name " + path + name);
                 //if the user does now enter correct path program use the String path as name 
-                //of the file and saves
-                //it in the same folder with this java project
+                //of the file and saves it in the same folder with this java project
               }
               exitcode = 1;
-              FileWriter file = new FileWriter(path + name); // creates the file with name given
-              // by the user
+              FileWriter file = new FileWriter(path + name); // creates the file with name 
+              //given by the user
               data.fileAdd(path, name, testnamesT, testnames);
               file.close(); //releases useless resource
             } catch (IOException e) {
@@ -95,4 +84,3 @@ public class Main2 {
     }
   }
 }
-

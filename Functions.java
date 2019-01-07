@@ -31,7 +31,7 @@ public class Functions {
   }
 
   /**
-   * Method that adds a new object(line) to a specific list
+   * Method that adds a new object(line) to a specific list.
    * @param num int value
    * @param object arraylistline
    */
@@ -62,7 +62,7 @@ public class Functions {
   }
 
   /**
-   * Method that deletes an object(line)
+   * Method that deletes an object(line).
    * @param rem first int value
    * @param num second int value
    */
@@ -127,7 +127,7 @@ public class Functions {
 
 
   /**
-   * Method that changes an object of a specific line
+   * Method that changes an object of a specific line.
    * @param list first int value
    * @param line second int value
    * @param column third int value
