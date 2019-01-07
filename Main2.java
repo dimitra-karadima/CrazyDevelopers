@@ -1,10 +1,12 @@
-package dds.gr.aueb.dmst.crazydevelopers;
+package gr.aueb.dmst.dds.CrazyDevelopers;
 
-import dds.gr.aueb.dmst.crazydevelopers.Functions;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * @author oneofthecraziest
+ */
 
 /*
  * Main method to run the program
@@ -16,8 +18,8 @@ public class Main2 {
   static String[] testnamesT;
   /**
    * Main method.
+   * @param args String Array
    */
-  
   public static void main(String[] args) {
     Menu menu = new Menu(); //new Menu object called menu
     int numTables = menu.openingMenu(); // User enters amount of tables for data base

@@ -1,11 +1,10 @@
-package dds.gr.aueb.dmst.crazydevelopers;
+package gr.aueb.dmst.dds.CrazyDevelopers;
 
 /**
  *Class that contains necessary functions for our database:
  * input of data , data presentation, delete and change of data
  */
 
-import dds.gr.aueb.dmst.crazydevelopers.Exceptions;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -20,6 +19,7 @@ public class Functions {
 
   /**
    * Constructor of our class Sets length of our array of array lists.
+   * @param num int value
    */
 
   @SuppressWarnings("unchecked")
@@ -30,8 +30,10 @@ public class Functions {
     }
   }
 
-  /*
+  /**
    * Method that adds a new object(line) to a specific list
+   * @param num int value
+   * @param object arraylistline
    */
   public void addLine(ArrayListLine object, int num) {
     lists[num].add(object);
@@ -41,6 +43,8 @@ public class Functions {
    * Method that allows user to add the new line to a table Asks for the number of
    * table to add a new line and then asks for the Strings for every column After
    * it creates a new line using the addLine(...) method.
+   * @param arrayNumberColumns array of int values
+   * @param names array of string values
    */
   public void addChoice(int[] arrayNumberColumns, String[][] names) {
     features = arrayNumberColumns;
@@ -57,8 +61,10 @@ public class Functions {
     addLine(xx, tableAdd - 1);
   }
 
-  /*
+  /**
    * Method that deletes an object(line)
+   * @param rem first int value
+   * @param num second int value
    */
   public void delete(int rem, int num) {
     lists[num].remove(rem);
@@ -68,6 +74,7 @@ public class Functions {
    * Method that deletes a specific line of a specific table Asks user to input
    * number of table and number of line Uses method delete of class Functions to
    * do so.
+   * 
    */
   public void deleteChoice() {
     ex.display("Select list to delete an item: ");
@@ -87,6 +94,9 @@ public class Functions {
   /**
    * Method that prints a specific object of a list and the names of the columns,
    * all given by the user.
+   * @param list first int value
+   * @param num2 second int value
+   * @param names  array of string values 
    */
   public void print(int list, int num2, String[][] names) {
     if (num2 == 0) {
@@ -102,6 +112,8 @@ public class Functions {
   /**
    * Method that prints all the lines and columns(all the objects ArrayListLine
    * there are) of the existing tables Uses the method print of Functions to do so.
+   * @param names array of string values 
+   * @param namesT  array of string values 
    */
   public void printChoice(String[] namesT, String[][] names) {
     for (int i = 0; i < lists.length; i++) {
@@ -113,8 +125,13 @@ public class Functions {
     }
   }
 
-  /*
+
+  /**
    * Method that changes an object of a specific line
+   * @param list first int value
+   * @param line second int value
+   * @param column third int value
+   * @param change fourth string value
    */
   public void change(int list, int line, int column, String change) {
     lists[list].get(line).changeColumn(column, change);
@@ -127,6 +144,7 @@ public class Functions {
    * whole line , he inputs all the different columns otherwise he clarifies which
    * column he wants to change and goes on to change it This method uses the
    * method change of class Functions to do so.
+   * @param arrayNumberColumns array of int values
    */
   public void changeChoice(int[] arrayNumberColumns) {
     ex.display("Select 1 to change a whole line and 2 to change a specific column: ");
@@ -168,6 +186,10 @@ public class Functions {
   /**
    * Method to add to an already existing file named by the user file has the same
    * output as the print choice above.
+   * @param path string value
+   * @param name string value
+   * @param names array of string values 
+   * @param namesT  array of string values 
    */
   public void fileAdd(String path, String name, String[]namesT, String[][] names) {
     try {

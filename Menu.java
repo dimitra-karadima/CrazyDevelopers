@@ -1,7 +1,10 @@
-package dds.gr.aueb.dmst.crazydevelopers;
+package gr.aueb.dmst.dds.CrazyDevelopers;
 
 /*
  * Class that contains all the menus needed for the program
+ */
+/**
+ * @author oneofthecraziest
  */
 
 import java.util.Scanner;
@@ -14,7 +17,7 @@ public class Menu {
   Scanner input = new Scanner(System.in);
   /**
    * Method that asks user to enter the number of tables for the database and
-   * return this integer.
+   * @return this integer.
    */
   
   public int openingMenu() {
@@ -28,6 +31,7 @@ public class Menu {
   }
   /**
    * Method that prints the menu to the screen and returns the choice of the user.
+   * @return choice for function
    */
   
   public int choiceForFunctions() {
@@ -42,6 +46,9 @@ public class Menu {
    * position of the table by asking user to enter positive numbers for example if
    * columnPerTable={3,5,1} means that table 1 has 3 columns , table 2 has 5
    * columns, table 3 has 1 column returns this table.
+   * @param tables int value
+   * @return columnPerTable 
+   * 
    */
   public int[] menuColumns(int tables) {
     columnPerTable = new int[tables];
@@ -63,6 +70,7 @@ public class Menu {
    * user wants and columns the number of columns of the specific table. The user
    * gives the names for each column of every table and the method inserts these names
    * into the two-dimension array names[][]
+   * @param columnPerTable array of int values
    */
   public void addNames(int[] columnPerTable) {
     names = new String[columnPerTable.length][];
@@ -78,6 +86,7 @@ public class Menu {
   /**
    * Method to give user the opportunity to name every table of the DataBase
    * The table names are saved in the one-dimension array namesT[].
+   * @param tables int value
    */
   public void nameTables(int tables) {
     namesT = new String[tables];
@@ -92,6 +101,7 @@ public class Menu {
    * or wants to use the default one (User press 1)
    * The default path is C:\\Users/Public\\ and it is declared by us (User press 2)
    * Returns the choice that the user makes,which is 1 or 2.
+   * @return choice of customer
    */
   public int findChoice() {
     ex.display("Enter 1 if you want it to enter the path you want to save the file in"
@@ -130,10 +140,11 @@ public class Menu {
     }
   }
 
-  /*
+  /**
    * Simple get methods for names[][] and namesT[]
    * Will be used by Main2 class
    * Useful for the addChoice() and printChoice()
+   * @return names
    */
   public String[][] getNames() {
     return names;
