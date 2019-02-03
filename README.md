@@ -40,6 +40,8 @@ necessary, the number of the specific feauture.
 User enters the name of the file he wishes to save the data base into and chooses the path of the file.
 He has the opportunity to enter his own path or save it to the default one(C:\Users/Public\)
 
+Of course, the Exceptions class catches if any exception is thrown because of a user's fault. For instance, the programm demands integer numbers for lines and columns for the database and a number less than the array length. If the user does not follow these rules the programm throws NotIntegerException or ArrayOutOfBoundsExceptions respectively. In order for the programm to work properly and continue without any problem Exception class forces the user to obey the rules.
+
 ## Members
 * [Konstantinos Zois](https://github.com/kzois)
 * [Nefeli-Andriani Theodosi](https://github.com/ntheodosi)
